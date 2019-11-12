@@ -20,8 +20,8 @@ module.exports = {
             if (!err) {
               res.json(doc);
             } else {
-                res.status(204).send(`Error when get employee with ID: ${req.params.id}. ${err}`);
-                console.log(`Error when get employee with ID: ${req.params.id}. ${err}`);
+                res.status(204).send(`Error when get employee with Id: ${req.params.id}. ${err}`);
+                console.log(`Error when get employee with Id: ${req.params.id}. ${err}`);
             }
         });
     },
@@ -29,21 +29,21 @@ module.exports = {
         var employeeCollection = [];
         for (var key in req.body) {
             if (req.body.hasOwnProperty(key)) {
-                emp = req.body[key];
+                empObj = req.body[key];
 
-                var newEmp = new Employee();
-                newEmp.firstName = emp.firstName;
-                newEmp.lastName = emp.lastName;
-                if(isValidDate(emp.hireDate)) {  
-                    newEmp.hireDate = moment.utc(emp.hireDate).format();
+                var newEmpObj = new Employee();
+                newEmpObj.firstName = empObj.firstName;
+                newEmpObj.lastName = empObj.lastName;
+                if(isValidDate(empObj.hireDate)) {  
+                    newEmpObj.hireDate = moment.utc(empObj.hireDate).format();
                 } else {
                     res.status(400).send('Please enter date in valid YYYY-MM-DD format');
                     return;
                 }
-                newEmp.role = emp.role;
-                newEmp.favoriteQuote = await getQuote();
-                newEmp.favoriteJoke = await  getJoke();
-                employeeCollection.push(newEmp);
+                newEmpObj.role = empObj.role;
+                newEmpObj.favoriteQuote = await getQuote();
+                newEmpObj.favoriteJoke = await getJoke();
+                employeeCollection.push(newEmpObj);
             }
         }
 
@@ -71,9 +71,10 @@ module.exports = {
                 res.send(`Employee ${req.params.id} has been updated successfully`);
             } else {
                 if (err.name == 'ValidationError') {
-                    res.status(400).send(`Error when update employee with ID: ${req.params.id}. ${err}`);
-                } else
-                    console.log('Error when update employee:' + err);
+                    res.status(400).send(`Error when update employee with Id: ${req.params.id}. ${err}`);
+                } else {
+                    console.log('Error when update employee with Id:' + err);
+                }
             }
         });
     },

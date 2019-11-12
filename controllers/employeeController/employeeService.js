@@ -35,52 +35,48 @@ module.exports = {
 
         employee.firstName = req.body.firstName;
         employee.lastName = req.body.lastName;
-
         if(isValidDate(req.body.hireDate)) {  
             employee.hireDate = moment.utc(req.body.hireDate).format();
         } else {
             employee.hireDate = null;
         }
-
         employee.role = req.body.role;
         employee.favoriteJoke = await getJoke();
         employee.favoriteQuote = await getQuote();
-        
         employee.save((err, doc) => {
-            if (!err)
+            if (!err) {
                 res.redirect('employees/list');
-            else {
+            } else {
                 if (err.name == 'ValidationError') {
                     handleValidationError(err, req.body);
                     res.render("employees/createOrEdit", {
                         viewTitle: "Create Employee",
                         employee: req.body
                     });
-                } else
+                } else {
                     console.log('Error when insert employee:' + err);
+                }
             }
         });
     },
     updateEmployee: function(req, res) {
-        console.log(req.body);
-
         if(!isValidDate(req.body.hireDate)) {
             req.body.hireDate = null;
         }
-
         var opts = { runValidators: true, new: true };
-
         Employee.findOneAndUpdate({ _id: req.body._id }, req.body, opts, (err, doc) => {
-            if (!err) { res.redirect('employees/list'); }
-            else {
+            if (!err) { 
+                res.redirect('employees/list'); 
+            } else {
                 if (err.name == 'ValidationError') {
                     handleValidationError(err, req.body);
                     res.render("employees/createOrEdit", {
                         viewTitle: 'Update employee',
                         employee: req.body
                     });
-                } else
+                } else {
                     console.log('Error when update employee:' + err);
+                }
             }
         });
     },

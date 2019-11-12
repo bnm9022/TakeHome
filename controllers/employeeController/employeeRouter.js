@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     if (req.body._id == ''){
         insertEmployee(req, res);
-    } else{
+    } else {
         updateEmployee(req, res);
     }
 });

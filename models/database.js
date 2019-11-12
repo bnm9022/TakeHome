@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/EmployeeDatabase', {useNewUrlParser: true }, (err) => {
     if (!err) { 
-    	console.log('MongoDB Connected Successfully.') 
+    	console.log('MongoDB Connected Successfully') 
     } else { 
-    	console.log('Error in Database connection : ' + err) 
+    	console.log('Error in Database connection:' + err) 
     }
 })
