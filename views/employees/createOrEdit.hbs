@@ -1,0 +1,28 @@
+<h3>{{viewTitle}}</h3>
+<form action="/employees" method="POST">
+    <input type="hidden" name="_id" value="{{employee._id}}">
+    <div class="form-group">
+        <label>First name</label>
+        <input type="text" class="form-control" name="firstName" value="{{employee.firstName}}"/>
+        <div class="text-danger"> {{employee.firstNameError}} </div>
+    </div>
+     <div class="form-group">
+        <label>Last name</label>
+        <input type="text" class="form-control" name="lastName" value="{{employee.lastName}}"/>
+        <div class="text-danger"> {{employee.lastNameError}} </div>
+    </div>
+    <div class="form-group">
+        <label>Hire date</label>
+        <input type="text" class="form-control" name="hireDate" value="{{employee.hireDate}}"/>
+        <div class="text-danger"> {{employee.hireDateError}} </div>
+    </div>
+        <div class="form-group">
+        <label>Role</label>
+        <input type="text" class="form-control" name="role" value="{{employee.role}}"/>
+        <div class="text-danger"/> {{employee.roleError}} </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">Submit</button>
+        <a class="btn btn-secondary" href="/employees/list"> View all employees</a>
+    </div>
+</form>

@@ -1,0 +1,25 @@
+<h3 style="text-align:right;"><a class="btn btn-info" href="/employees"><i class="fa fas fa-plus-square"></i> Add a employee</a></h3>
+<h3> All Employees </h3>
+<table class="table" style="font-size: 15px;">
+    <thead>
+        <tr>
+            <th>First Name</th> <th>Last Name</th>
+            <th>Hire Date</th> <th>Role</th>
+            <th>Favorite Quote</th> <th>Favorite Joke</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.firstName}}</td> <td>{{this.lastName}}</td>
+            <td>{{formatTime this.hireDate "YYYY-MM-DD"}}</td> <td>{{this.role}}</td>
+            <td>{{this.favoriteQuote}}</td> <td>{{this.favoriteJoke}}</td>
+            <td>
+                <a href="/employees/{{this._id}}"><i class="fa far fa-edit fa-lg"></i></a>
+                <a href="/employees/delete/{{this._id}}" onclick="return confirm('You want delete this record?');"><i class="fa fa-trash fa-lg"></i></a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

@@ -1,8 +1,9 @@
-**TASK**
+**Description**
 
-- This is a node app that implements a set of REST APIs allowing CRUD functionality for an employee resource using MongoDB
+This is a node app that implements a set of REST APIs allowing CRUD functionality for an employee resource using MongoDB
 
-** Running **
+**Running**
+
 Run "npm install" to install the essential node modules for the app
 Download MongoDB Compass Community software, and connect locally
 Create a local database EmployeeDatabase with a collection called Employees
