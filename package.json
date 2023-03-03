@@ -11,7 +11,7 @@
     "express-handlebars": "^3.1.0",
     "handlebars": "^4.7.7",
     "handlebars-helpers": "^0.10.0",
-    "hbs": "^4.0.4",
+    "hbs": "^4.2.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.26",
     "mongoose": "^5.7.5",
